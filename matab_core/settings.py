@@ -1,3 +1,5 @@
+from pathlib import Path
+import os  # این خط اضافه شود
 """
 Django settings for matab_core project.
 
@@ -25,10 +27,8 @@ SECRET_KEY = 'django-insecure-n!quvg3si4$a+a#_0b#ax8xpoih13rh8=o8a7osc=^3o=zkfhe
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
-# Application definition
+# اجازه به موبایل و Ngrok برای اتصال
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # این دو خط را به انتهای لیست اضافه کن:
+    'rest_framework',
+    'clinic',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,3 +125,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# این خطوط را به آخر فایل اضافه کن:
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
